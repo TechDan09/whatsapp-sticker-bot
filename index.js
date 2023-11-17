@@ -1,12 +1,25 @@
 const { Client, LocalAuth, MessageMedia } = require("whatsapp-web.js");
 const qrGen = require("qrcode-terminal");
 const sharp = require("sharp");
+const http = require("http");
+const port = process.env.PORT || 10000;
 
 const client = new Client({
   authStrategy: new LocalAuth(),
   ffmpegPath: "./ffmpeg.exe",
 });
 
+// NOTE: Feel free to ignore this file, it's just for the sake of hosting on render.com, an open port is required.
+http
+  .createServer(function (req, res) {
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.end("WhatsApp bot is running\n");
+  })
+  .listen(port, function () {
+    console.log(`Server is running on port ${port}`);
+  });
+
+// Generate QR code
 client.on("qr", (qr) => {
   console.log("QR RECEIVED", qr);
   qrGen.generate(qr, {

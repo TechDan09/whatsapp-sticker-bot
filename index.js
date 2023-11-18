@@ -88,6 +88,8 @@ async function processImage(media, msg) {
 
     msg.reply(sticker, "", {
       sendMediaAsSticker: true,
+      stickerAuthor: "TechDan's Bot",
+      stickerName: "Bloks",
     });
   } catch (err) {
     console.error("Error processing image:", err);

@@ -9,7 +9,7 @@ const client = new Client({
   ffmpegPath: "./ffmpeg.exe",
 });
 
-// NOTE: Feel free to ignore this file, it's just for the sake of hosting on render.com, an open port is required.
+// NOTE: Feel free to ignore this method, it's just for the sake of hosting on render.com, an open port is required.
 http
   .createServer(function (req, res) {
     res.writeHead(200, { "Content-Type": "text/plain" });

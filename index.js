@@ -6,7 +6,7 @@ const port = process.env.PORT || 10000;
 
 const client = new Client({
   authStrategy: new LocalAuth(),
-  ffmpegPath: "./ffmpeg.exe",
+  ffmpegPath: process.env.FFMPEG_PATH || "./ffmpeg.exe",
 });
 
 // NOTE: Feel free to ignore this method, it's just for the sake of hosting on render.com, an open port is required.

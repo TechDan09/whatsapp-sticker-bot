@@ -6,7 +6,13 @@ const port = process.env.PORT || 10000;
 
 const client = new Client({
   authStrategy: new LocalAuth(),
+  // FFMPeg path is required for animated sticker conversion, the env variable is set in order to host on render.com on a linux machine, so you can ignore this if you're hosting on a windows machine and just use the default path.
   ffmpegPath: process.env.FFMPEG_PATH || "./ffmpeg.exe",
+  // This is required to run on docker
+  puppeteer: {
+    headless: true,
+    args: ["--no-sandbox"],
+  },
 });
 
 // NOTE: Feel free to ignore this method, it's just for the sake of hosting on render.com, an open port is required.
